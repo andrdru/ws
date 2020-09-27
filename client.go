@@ -21,11 +21,6 @@ const (
 	maxMessageSize = 512
 )
 
-var upgrader = websocket.Upgrader{
-	ReadBufferSize:  1024,
-	WriteBufferSize: 1024,
-}
-
 var _ Client = &client{}
 
 func NewClient(hub Hub, conn *websocket.Conn) *client {

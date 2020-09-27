@@ -3,10 +3,12 @@ package ws
 import (
 	"log"
 	"net/http"
+
+	"github.com/gorilla/websocket"
 )
 
 // serveWs handles websocket requests from the peer.
-func ServeWs(hub Hub, w http.ResponseWriter, r *http.Request) {
+func ServeWs(hub Hub, upgrader websocket.Upgrader, w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Println(err)
